@@ -27,7 +27,7 @@ const ISTEgram = styled.div`
     }
   }
   .profile{
-    border:2px solid black;
+    border:3px solid black;
     margin:2%;
     img{
       margin:1%;
@@ -35,9 +35,24 @@ const ISTEgram = styled.div`
       ${'' /* display: inline-flex; */}
     }
     div{
-      position:absolute;
+      ${'' /* position:absolute; */}
+      width:65%;
+      float:right;
+      top:0;
+      border:1px solid black;
       table{
-        width:200%;
+        float:right;
+        margin-right:5%;
+        ${'' /* position:relative; */}
+        width:80%;
+        th{
+          text-align:center;
+          font-size:2vw;
+        }
+        td{
+          text-align:center;
+          font-size:1.5vw;
+        }
       }
     }
 
@@ -58,14 +73,14 @@ export default function person() {
             <div>
               <table>
                 <tr>
-                  <th>Firstname</th>
-                  <th>Lastname</th>
-                  <th>Age</th>
+                  <th>28</th>
+                  <th>10</th>
+                  <th>2003</th>
                 </tr>
                 <tr>
-                  <td>Jill</td>
-                  <td>Smith</td>
-                  <td>50</td>
+                  <td>Date</td>
+                  <td>Month</td>
+                  <td>Year</td>
                 </tr>
               </table>
             </div>
