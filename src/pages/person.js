@@ -7,6 +7,10 @@ import Year from "./year"
 import SettingsIcon from '@material-ui/icons/Settings';
 import { LoremIpsum } from 'react-lorem-ipsum';
 import ContactsIcon from '@material-ui/icons/Contacts';
+import AppsIcon from '@material-ui/icons/Apps';
+import ListIcon from '@material-ui/icons/List';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import TurnedInNotIcon from '@material-ui/icons/TurnedInNot';
 // @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 
 
@@ -22,17 +26,18 @@ const ISTEgram = styled.div`
   h1{
     ${'' /* font-family: 'Josefin Sans', sans-serif; */}
     ${'' /* font-family: 'Open Sans', sans-serif; */}
-    font-family: 'Zen Dots', cursive;
+    ${'' /* font-family: 'Zen Dots', cursive; */}
     margin: 0 0 0 1%;
     font-size: 50px;
     display: inline-flex;
     span{
-      font-family: 'Lobster', cursive;
+      ${'' /* font-family: 'Lobster', cursive; */}
     }
   }
   .profile{
     border:3px solid black;
     margin:2%;
+    margin-bottom:0;
     display:flex;
     .details{
       width:35%;
@@ -88,8 +93,14 @@ const ISTEgram = styled.div`
         }
       }
     }
-
-
+  }
+  .icons{
+    margin:1%;
+    svg{
+      margin: 0 9.5% 0 9.5%;
+      font-size: 2.5vw;
+      color:rgb(59, 59, 59);
+    }
   }
 `;
 
@@ -115,6 +126,12 @@ export default function person() {
                 <LoremIpsum p={1} />
               </div>
             </div>
+          </div>
+          <div className="icons">
+              <AppsIcon style={{fill:"#515BD4"}}/>
+              <ListIcon style={{fill:"#8134AF"}}/>
+              <AssignmentIndIcon style={{fill:"#DD2A7B"}}/>
+              <TurnedInNotIcon style={{fill:"#F58529"}}/>
           </div>
         </div>
       </ISTEgram>
