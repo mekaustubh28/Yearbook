@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import imageLogo from '../content/images/Logo.png'
 import imagePerson from "../content/images/person.jpg"
 import styling from '../content/styling/styles.css'
+import Year from "./year"
 // @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 
 
@@ -71,18 +72,7 @@ export default function person() {
           <div className="profile">
             <img src={imagePerson} alt="My Image" width="30%"/>
             <div>
-              <table>
-                <tr>
-                  <th>28</th>
-                  <th>10</th>
-                  <th>2003</th>
-                </tr>
-                <tr>
-                  <td>Date</td>
-                  <td>Month</td>
-                  <td>Year</td>
-                </tr>
-              </table>
+              <Year />
             </div>
           </div>
         </div>
