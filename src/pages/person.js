@@ -105,6 +105,9 @@ const ISTEgram = styled.div`
           @media screen and (max-width: 1200px){
             font-size:3vw;
           }
+          @media screen and (max-width: 1475px){
+            font-size:5vw;
+          }
         }
         td{
           border:none;
@@ -132,6 +135,9 @@ const ISTEgram = styled.div`
             font-size:2vw;
             padding:1% 25%;
           }
+          @media screen and (max-width:475px){
+            font-size:4vw;
+          }
         }
         .span2{
           padding:1% 3%;
@@ -142,11 +148,17 @@ const ISTEgram = styled.div`
             font-size:2vw;
             padding:1% 5%;
           }
+          @media screen and (max-width: 475px){
+            font-size:4vw;
+          }
           svg{
             font-size:1.5vw;
             @media screen and (max-width: 1200px){
               font-size:2vw;
             }
+            @media screen and (max-width: 475px){
+            font-size:4vw;
+          }
           }
         }
       }
@@ -190,7 +202,10 @@ const ISTEgram = styled.div`
       color:rgb(59, 59, 59);
       @media screen and (max-width: 1200px){
             font-size:4vw;
-          }
+      }
+      @media screen and (max-width: 475px){
+            font-size:5vw;
+      }
     }
   }
 `;
