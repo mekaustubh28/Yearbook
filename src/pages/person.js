@@ -6,19 +6,46 @@ import styling from '../content/styling/styles.css'
 import Year from "./year"
 import SettingsIcon from '@material-ui/icons/Settings';
 import { LoremIpsum } from 'react-lorem-ipsum';
-import ContactsIcon from '@material-ui/icons/Contacts';
+// import ContactsIcon from '@material-ui/icons/Contacts';
 import AppsIcon from '@material-ui/icons/Apps';
 import ListIcon from '@material-ui/icons/List';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import TurnedInNotIcon from '@material-ui/icons/TurnedInNot';
+// import React from "react"
+
+// import Layout from "../components/layout"
+// import SEO from "../components/seo"
+import Members from "./Members"
+
+
+// export default function Member(){
+//     return(
+//         <Layout>
+//             <SEO title="Members"/>
+                
+//         </Layout>
+//     )
+// }
 // @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 
 
 const ISTEgram = styled.div`
   ${'' /* text-align:center; */}
-  border:2px solid black;
+  border:1px solid black;
   padding:1%;
   margin: 0px 23%;
+
+  @media screen and (max-width: 1602px){
+    margin: 0px 20%;
+  }
+
+  @media screen and (max-width: 1200px){
+    margin: 0px 10%;
+  }
+  @media screen and (max-width: 1000px){
+    margin: 0px;
+  }
+
   img{
     display: inline-flex;
     margin:0;
@@ -35,7 +62,11 @@ const ISTEgram = styled.div`
     }
   }
   .profile{
-    border:3px solid black;
+    border-bottom: 1px solid black;
+    @media screen and (max-width: 770px){
+      border-bottom: 0;
+    }
+    padding-bottom:2%;
     margin:2%;
     margin-bottom:0;
     display:flex;
@@ -49,13 +80,16 @@ const ISTEgram = styled.div`
         text-align:center;
         ${'' /* width:fit-content; */}
         margin:1%;
+        @media screen and (max-width: 770px){
+          display:none;
+        }
       }  
     }
     .bio{
       width:65%;
       float:right;
       margin-left:4% ;
-      border:1px solid black;
+      ${'' /* border:1px solid black; */}
       table{
         border:none;
         ${'' /* float:right; */}
@@ -68,38 +102,95 @@ const ISTEgram = styled.div`
           text-align:center;
           font-size:2vw;
           padding:0;
+          @media screen and (max-width: 1200px){
+            font-size:3vw;
+          }
         }
         td{
           border:none;
           text-align:center;
           font-size:1vw;
           padding:0;
+          @media screen and (max-width: 1200px){
+            font-size:3vw;
+          }
         }
       }
       h3{
         margin:1% 0 1% 4%;
-        ${'' /* margin-top:1%; */}
         ${'' /* text-align:center; */}
+        @media screen and (max-width: 1200px){
+            margin-top:3%;
+        }
         .span1{
           padding:1% 24%;
           border:1px solid black;
           margin-right:2%;
+          font-size:1.5vw;
           border-radius:5px;
+          @media screen and (max-width: 1200px){
+            font-size:2vw;
+            padding:1% 25%;
+          }
         }
         .span2{
           padding:1% 3%;
           border-radius:5px;
+          font-size:1.5vw;
           border:1px solid black;
+          @media screen and (max-width: 1200px){
+            font-size:2vw;
+            padding:1% 5%;
+          }
+          svg{
+            font-size:1.5vw;
+            @media screen and (max-width: 1200px){
+              font-size:2vw;
+            }
+          }
+        }
+      }
+      .text-wrapper{
+        p{
+          @media screen and (max-width: 770px){
+            display:none;
+          }
+        }
+      }
+      .name{
+        display:none;
+        @media screen and (max-width: 770px){
+          display:block;
+          font-size:4vw;
+          margin: 0 0 0 20%;
         }
       }
     }
   }
+  .para{
+    display:none;
+      @media screen and (max-width: 770px){
+        display:block;
+      }
+    p{
+      @media screen and (max-width: 770px){
+        margin-left: 5%;
+      }
+    }
+    @media screen and (max-width: 770px){
+      border-bottom: 1px solid black;
+    }  
+  }
+  
   .icons{
     margin:1%;
     svg{
       margin: 0 9.5% 0 9.5%;
       font-size: 2.5vw;
       color:rgb(59, 59, 59);
+      @media screen and (max-width: 1200px){
+            font-size:4vw;
+          }
     }
   }
 `;
@@ -116,16 +207,21 @@ export default function person() {
           <div className="profile">
             <div className="details">
               <img src={imagePerson} alt="My Image" width="100%"/>
-              <h3>Kaustubh Verma<span style={{margin:"1%"}}><ContactsIcon style={{fill:"blue"}}/></span></h3>
+              <h3>Kaustubh Verma</h3>
+              {/* <span style={{margin:"1%"}}><ContactsIcon style={{fill:"blue"}}/></span> */}
               {/* <p>Hello world</p> */}
             </div>
             <div className="bio">
               <Year />
               <div className="text-wrapper">
-                <h3><span className="span1">Profile</span><span className="span2"><SettingsIcon /></span></h3>
+                <h3><span className="span1">Profile</span><span className="span2"><SettingsIcon /></span></h3><br></br>
+                <h3 className="name">Kaustubh Verma</h3>
                 <LoremIpsum p={1} />
               </div>
             </div>
+          </div>
+          <div className="para">
+            <LoremIpsum p={1}/>
           </div>
           <div className="icons">
               <AppsIcon style={{fill:"#515BD4"}}/>
@@ -134,7 +230,9 @@ export default function person() {
               <TurnedInNotIcon style={{fill:"#F58529"}}/>
           </div>
         </div>
+        <Members></Members>
       </ISTEgram>
     </>
   )
 }
+
