@@ -44,7 +44,7 @@ export default function Members() {
             >
               {/* <div className="name">{row.node.img}</div> */}              
               {/* <StaticImage src={row.node.img} alt="A dinosaur" /> */}
-              <img src={row.node.img} width="32.33%" style={{border: "1px solid gray", marginLeft:"1%"}}/>
+              <img src={row.node.img} width="32.33%" style={{border: "1px solid gray", marginLeft:"1%",borderRadius:"3px"}}/>
           </span>
         ))}
     </div>
