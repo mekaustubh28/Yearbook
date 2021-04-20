@@ -153,6 +153,7 @@ const ISTEgram = styled.div`
           }
           svg{
             font-size:1.5vw;
+            padding-top:1%;
             @media screen and (max-width: 1200px){
               font-size:2vw;
             }
