@@ -1,30 +1,106 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useState } from "react";
+import { graphql, useStaticQuery } from "gatsby"
+import styled from "styled-components"
+import Member from "../pages/Member"
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
+const Card = styled.div`
+  .cards{
+    .card{
+      width:33.33%;
+      align-items: center;
+      text-align: center;
+      display: inline-block;
+      border: 2px solid red;
+      cursor:pointer;
+    }
+  }
+  .back{
+    cursor:pointer;
+    background-color: red;
+    position:fixed;
+    z-index:+9;
+    right:10px;
+    border:2px solid black;
+    .backbtn{
+      
+    }
+  }
+`
+
+export default function Members() {
+  const data = useStaticQuery(graphql`
+    query {
+      allMembersXlsxSheet1(sort: { fields: name, order: ASC }) {
+        edges {
+          node {
+            name
+            link
+            img
+            description
+          }
+        }
+      }
+    }
+  `)
+
+  const [Id,setId] = useState('-1');
+  const [Name,setName] = useState('kaustubh');
+  const [Desc,setDesc] = useState('happy');
+  const [Img,setImg] = useState('Img');
+  const [show,setShow] = useState(false);
 
 
-function ListLink(props){
-  return(
-    <Link to={props.to}>{props.children}</Link>
-  )
-}
+  function UserClick(event){
+    let {id, name, desc, img} = event.currentTarget.dataset;
+    console.log(id,name,desc,img);
+    setId(id);
+    setName(name);
+    setDesc(desc);
+    setImg(img);
+    setShow(true);
+  }
 
+  function UserClickBack(){
+    setShow(false);
+  }
 
+  const ShowInsta = {display:show?'block':'none'}
+  const ShowBackBtn = {display:show?'block':'none'}
 
+  console.log({Id,Name,Desc,Img});
 
-export default function Layout({ children }) {
   return (
-    <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}>
-      <header style={{ marginBottom: `1.5rem` }}>
-        <ul>
-          <ListLink to="/">Home</ListLink>
-          <ListLink to="/person/">
-            <img src="data:image/jpeg;base64,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" />
-            <h1>Hello</h1>
-            </ListLink>
-          <ListLink to="/contact/">Contact</ListLink>
-        </ul>
-      </header>
-      {children}
-    </div>
+    <>
+      <Card>
+        <a 
+          className="back" 
+          style={ShowBackBtn} 
+          onClick={UserClickBack}
+        >
+        <ArrowBackIcon className="backbtn" />
+        </a>
+        <div style={ShowInsta}>
+        <Member className="instaCard" id={Id} name={Name} desc={Desc} img={Img}/>
+        </div>
+          <div className="cards">
+          {data.allMembersXlsxSheet1.edges.map((row, i) => (  
+              <div className="card" data-id={i} data-tag={i} data-name={row.node.name} data-desc={row.node.description} data-img={row.node.img} onClick={UserClick}>
+                <div>{row.node.name}</div>
+                <div>{row.node.description}</div>
+                <img
+                  src={row.node.img}
+                  height="200px"
+                  style={{
+                  border: "1px solid gray",
+                  marginLeft: "1%",
+                  }}
+                  alt={row.node.name}
+                />
+              </div>
+      ))}
+      </div>
+      </Card>
+    </>
   )
 }

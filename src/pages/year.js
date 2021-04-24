@@ -3,21 +3,19 @@ import React from "react"
 
 export default function Year(){
   return(
-    <>
-      <tableStyle>
+    <div>
         <table>
-        <tr>
+        <tbody>
           <th>28</th>
           <th>10</th>
           <th>2003</th>
-        </tr>
-        <tr>
+        </tbody>
+        <tbody>
           <td>Date</td>
           <td>Month</td>
           <td>Year</td>
-        </tr>
+        </tbody>
       </table>
-    </tableStyle>
-    </>
+    </div>
 )
 }
