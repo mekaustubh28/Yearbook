@@ -1,36 +1,19 @@
 import React from "react"
 import styled from 'styled-components'
 import imageLogo from '../content/images/Logo.png'
-import imagePerson from "../content/images/person.jpg"
-import styling from '../content/styling/styles.css'
 import Year from "./year"
 import SettingsIcon from '@material-ui/icons/Settings';
 import { LoremIpsum } from 'react-lorem-ipsum';
-// import ContactsIcon from '@material-ui/icons/Contacts';
 import AppsIcon from '@material-ui/icons/Apps';
 import ListIcon from '@material-ui/icons/List';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import TurnedInNotIcon from '@material-ui/icons/TurnedInNot';
-// import React from "react"
-
-// import Layout from "../components/layout"
-// import SEO from "../components/seo"
-import Members from "./Members"
-
-
-// export default function Member(){
-//     return(
-//         <Layout>
-//             <SEO title="Members"/>
-                
-//         </Layout>
-//     )
-// }
-// @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+import Pictures from "./Pictures"
 
 
 const ISTEgram = styled.div`
-  ${'' /* text-align:center; */}
+  position:fixed;
+  background:Red;
   border:1px solid black;
   padding:1%;
   margin: 0px 23%;
@@ -49,17 +32,11 @@ const ISTEgram = styled.div`
   img{
     display: inline-flex;
     margin:0;
-  }
+    }
   h1{
-    ${'' /* font-family: 'Josefin Sans', sans-serif; */}
-    ${'' /* font-family: 'Open Sans', sans-serif; */}
-    ${'' /* font-family: 'Zen Dots', cursive; */}
     margin: 0 0 0 1%;
     font-size: 50px;
     display: inline-flex;
-    span{
-      ${'' /* font-family: 'Lobster', cursive; */}
-    }
   }
   .profile{
     border-bottom: 1px solid black;
@@ -78,7 +55,6 @@ const ISTEgram = styled.div`
       }
       h3{
         text-align:center;
-        ${'' /* width:fit-content; */}
         margin:1%;
         @media screen and (max-width: 770px){
           display:none;
@@ -89,11 +65,8 @@ const ISTEgram = styled.div`
       width:65%;
       float:right;
       margin-left:4% ;
-      ${'' /* border:1px solid black; */}
       table{
         border:none;
-        ${'' /* float:right; */}
-        ${'' /* align-items:center; */}
         margin-left:10%;
         margin-bottom:0;
         width:80%;
@@ -105,7 +78,7 @@ const ISTEgram = styled.div`
           @media screen and (max-width: 1200px){
             font-size:3vw;
           }
-          @media screen and (max-width: 1475px){
+          @media screen and (max-width: 475px){
             font-size:5vw;
           }
         }
@@ -121,7 +94,6 @@ const ISTEgram = styled.div`
       }
       h3{
         margin:1% 0 1% 4%;
-        ${'' /* text-align:center; */}
         @media screen and (max-width: 1200px){
             margin-top:3%;
         }
@@ -153,6 +125,7 @@ const ISTEgram = styled.div`
           }
           svg{
             font-size:1.5vw;
+            padding-top:1%;
             @media screen and (max-width: 1200px){
               font-size:2vw;
             }
@@ -210,27 +183,27 @@ const ISTEgram = styled.div`
   }
 `;
 
-export default function person() {
+export default function person(props) {
+
+  // console.log(props.id, props.name, props.desc, props.img);
   return (
-    <>
+    <div>
       <ISTEgram>
-        <div className="container">
+        <div className="container" id={props.id}>
           <div>
             <img src={imageLogo}  alt="ISTElogo" width="50px"/>
             <h1><span>ISTE</span>gram</h1>
           </div>
           <div className="profile">
             <div className="details">
-              <img src={imagePerson} alt="My Image" width="100%"/>
-              <h3>Kaustubh Verma</h3>
-              {/* <span style={{margin:"1%"}}><ContactsIcon style={{fill:"blue"}}/></span> */}
-              {/* <p>Hello world</p> */}
+              <img src={props.img} alt="My Image" width="100%"/>
+              <h3>{props.name}</h3>
             </div>
             <div className="bio">
               <Year />
               <div className="text-wrapper">
                 <h3><span className="span1">Profile</span><span className="span2"><SettingsIcon /></span></h3><br></br>
-                <h3 className="name">Kaustubh Verma</h3>
+                <h3 className="name">{props.name}</h3>
                 <LoremIpsum p={1} />
               </div>
             </div>
@@ -245,9 +218,9 @@ export default function person() {
               <TurnedInNotIcon style={{fill:"#F58529"}}/>
           </div>
         </div>
-        <Members></Members>
+        <Pictures></Pictures>
       </ISTEgram>
-    </>
+    </div>
   )
 }
 
