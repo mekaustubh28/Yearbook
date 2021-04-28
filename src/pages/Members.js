@@ -4,7 +4,7 @@ import Image from "gatsby-image"
 import styled from "styled-components"
 // import image from "../content/members"
 import { StaticImage } from "gatsby-plugin-image"
-import image from "../content/members/balidaan.jpg"
+
 
 
 const Img = styled(Image)`

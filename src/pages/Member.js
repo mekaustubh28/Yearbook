@@ -9,6 +9,7 @@ import ListIcon from '@material-ui/icons/List';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import TurnedInNotIcon from '@material-ui/icons/TurnedInNot';
 import Pictures from "./Pictures"
+import {AnimatePresence, motion} from "framer-motion";
 
 
 const ISTEgram = styled.div`
@@ -17,6 +18,8 @@ const ISTEgram = styled.div`
   border:1px solid black;
   padding:1%;
   margin: 0px 23%;
+  z-index:+999999;
+  ${'' /* overflow-y:scroll; */}
 
   @media screen and (max-width: 1602px){
     margin: 0px 20%;
@@ -184,12 +187,31 @@ const ISTEgram = styled.div`
 `;
 
 export default function person(props) {
-
+  const pageTransition = {
+    in: {
+      opacity: 1,
+      y: 0
+    },
+    out: {
+      opacity: 0,
+      y: "-100%"
+    }
+  };
   // console.log(props.id, props.name, props.desc, props.img);
+
   return (
-    <div>
+
+    <div style={{background:"black"}}>
       <ISTEgram>
-        <div className="container" id={props.id}>
+      <AnimatePresence>
+        <motion.div 
+          exit="out" 
+          animate="in" 
+          initial="out" 
+          variants={pageTransition}
+          className="container" 
+          id={props.id}
+        >
           <div>
             <img src={imageLogo}  alt="ISTElogo" width="50px"/>
             <h1><span>ISTE</span>gram</h1>
@@ -217,8 +239,9 @@ export default function person(props) {
               <AssignmentIndIcon style={{fill:"#DD2A7B"}}/>
               <TurnedInNotIcon style={{fill:"#F58529"}}/>
           </div>
-        </div>
+          </motion.div>
         <Pictures></Pictures>
+        </AnimatePresence>
       </ISTEgram>
     </div>
   )

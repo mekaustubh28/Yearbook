@@ -1,10 +1,10 @@
 import React from "react"
-import Layout from "../components/layout"
+import Start from "../components/start"
 
 export default function Home() {
   return (
     <React.StrictMode>
-      <Layout></Layout>
+      <Start></Start>
     </React.StrictMode>
   );
 }

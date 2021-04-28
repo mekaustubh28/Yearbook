@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
+import styling from "../content/styling/styles.css"
 import Member from "../pages/Member"
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import GitHubIcon from "@material-ui/icons/GitHub";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import {motion, AnimatePresence} from "framer-motion";
+import AOS from "aos";
+import 'aos/dist/aos.css';
+
 
 const Card = styled.div`
+  div{
+    .instaCard{
+      position:absolute;
+      top:0px;
+      z-index:+999999999;
+    }
+  }
   .cards{
     .card{
       width:33.33%;
@@ -44,16 +59,32 @@ export default function Members() {
     }
   `)
 
-  const [Id,setId] = useState('-1');
-  const [Name,setName] = useState('kaustubh');
-  const [Desc,setDesc] = useState('happy');
-  const [Img,setImg] = useState('Img');
-  const [show,setShow] = useState(false);
+
+  // const [Mouse,SetMouse] = useState(true);
+
+  // function handleOver(){
+  //   SetMouse(false);
+  // }
+
+  // function handleOut(){
+  //   SetMouse(true);
+  // }
+
+  // const styleBtn = {
+  //   backgroundColor: Mouse?"#03bfcb":"transparent",
+  //   color: Mouse?"#231e39":"white"
+  // };
+
+  const [Id, setId] = useState('-1');
+  const [Name, setName] = useState('kaustubh');
+  const [Desc, setDesc] = useState('happy');
+  const [Img, setImg] = useState('Img');
+  const [show, setShow] = useState(false);
 
 
-  function UserClick(event){
-    let {id, name, desc, img} = event.currentTarget.dataset;
-    console.log(id,name,desc,img);
+  function UserClick(event) {
+    let { id, name, desc, img } = event.currentTarget.dataset;
+    console.log(id, name, desc, img);
     setId(id);
     setName(name);
     setDesc(desc);
@@ -61,45 +92,84 @@ export default function Members() {
     setShow(true);
   }
 
-  function UserClickBack(){
+  function UserClickBack() {
     setShow(false);
   }
 
-  const ShowInsta = {display:show?'block':'none'}
-  const ShowBackBtn = {display:show?'block':'none'}
+  useEffect(() => {
+    AOS.init({duration:200});
+  }, []);
 
-  console.log({Id,Name,Desc,Img});
+
+  const ShowInsta = { display: show ? 'block' : 'none' }
+  const ShowBackBtn = { display: show ? 'block' : 'none' }
+
+  console.log({ Id, Name, Desc, Img });
 
   return (
     <>
       <Card>
-        <a 
-          className="back" 
-          style={ShowBackBtn} 
+        <a
+          className="back"
+          style={ShowBackBtn}
           onClick={UserClickBack}
         >
-        <ArrowBackIcon className="backbtn" />
+          <ArrowBackIcon className="backbtn" />
         </a>
         <div style={ShowInsta}>
-        <Member className="instaCard" id={Id} name={Name} desc={Desc} img={Img}/>
+          <Member className="instaCard" id={Id} name={Name} desc={Desc} img={Img} />
         </div>
-          <div className="cards">
-          {data.allMembersXlsxSheet1.edges.map((row, i) => (  
-              <div className="card" data-id={i} data-tag={i} data-name={row.node.name} data-desc={row.node.description} data-img={row.node.img} onClick={UserClick}>
-                <div>{row.node.name}</div>
-                <div>{row.node.description}</div>
+        <AnimatePresence>
+        <div className="cards">
+          {data.allMembersXlsxSheet1.edges.map((row, i) => (
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.9 }}
+              data-aos="fade-up"
+              className="card-container"
+            >
                 <img
+                  className="round"
                   src={row.node.img}
-                  height="200px"
-                  style={{
-                  border: "1px solid gray",
-                  marginLeft: "1%",
-                  }}
-                  alt={row.node.name}
+                  alt="user"
+                  // height="150px"
                 />
-              </div>
-      ))}
-      </div>
+                <h3>{row.node.name}</h3>
+                <p>{row.node.description}</p>
+                <div className="buttons">
+                  <button 
+                    className="profile" 
+                    // style={styleBtn} 
+                    // // onMouseOver={handleOver} 
+                    // // onMouseOut={handleOut}
+                    data-id={i} 
+                    data-tag={i} 
+                    data-name={row.node.name} 
+                    data-desc={row.node.description} 
+                    data-img={row.node.img} 
+                    onClick={UserClick}
+                  >
+                    View Profile
+                  </button>
+                </div>
+                <div className="skills">
+                  <h6>Handles</h6>
+                  <div>
+                    <a href="https://www.youtube.com/">
+                      <GitHubIcon style={{ fill: "#F1F1EF" }} />
+                    </a>
+                    <a href="https://www.youtube.com/">
+                      <InstagramIcon style={{ fill: "#F1F1EF" }} />
+                    </a>
+                    <a href="https://www.youtube.com/">
+                      <LinkedInIcon style={{ fill: "#F1F1EF" }} />
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+          ))}
+        </div>
+        </AnimatePresence>
       </Card>
     </>
   )
