@@ -10,26 +10,10 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import {motion, AnimatePresence} from "framer-motion";
 import AOS from "aos";
 import 'aos/dist/aos.css';
+import ParticleBackground from "../pages/ParticleBackground";
 
 
 const Card = styled.div`
-  div{
-    .instaCard{
-      position:absolute;
-      top:0px;
-      z-index:+999999999;
-    }
-  }
-  .cards{
-    .card{
-      width:33.33%;
-      align-items: center;
-      text-align: center;
-      display: inline-block;
-      border: 2px solid red;
-      cursor:pointer;
-    }
-  }
   .back{
     cursor:pointer;
     background-color: red;
@@ -92,6 +76,7 @@ export default function Members() {
     setShow(true);
   }
 
+
   function UserClickBack() {
     setShow(false);
   }
@@ -109,6 +94,7 @@ export default function Members() {
   return (
     <>
       <Card>
+        <ParticleBackground/>
         <a
           className="back"
           style={ShowBackBtn}
@@ -123,16 +109,16 @@ export default function Members() {
         <div className="cards">
           {data.allMembersXlsxSheet1.edges.map((row, i) => (
             <motion.div 
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.07 }}
               whileTap={{ scale: 0.9 }}
               data-aos="fade-up"
               className="card-container"
-            >
+            > 
                 <img
                   className="round"
                   src={row.node.img}
                   alt="user"
-                  // height="150px"
+                  height="180px"
                 />
                 <h3>{row.node.name}</h3>
                 <p>{row.node.description}</p>
