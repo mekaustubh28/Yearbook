@@ -1,176 +1,101 @@
-import React, { useState } from "react";
-import { graphql, useStaticQuery, Link } from "gatsby"
-import styled from "styled-components"
-import styling from "../content/styling/styles.css"
-import Member from "../pages/Member"
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import GitHubIcon from "@material-ui/icons/GitHub";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
+// import React, { useState } from "react";
+// import { Link } from "gatsby"
+// import styled from "styled-components"
+// import styling from "../content/styling/styles.css";
+// import { Scrambler, Cycler } from "react-text-scrambler";
+
+// const LandingPage = styled.div`
+//   color: white;
+//   .top{
+//     text-align:center;
+//     h1{
+//       text-transform:uppercase;
+//       position:absolute;
+//       top:30px;
+//       left:50%;
+//       transform: translate(-50%, 0%);
+//     }
+//     .welcome{
+//       font-size:110px;
+//       color:#202529;
+//       font-weight:bold;
+//       letter-spacing: 10px;
+//       text-shadow: 3px 3px 20px white, -2px 1px 30px black;
+//       font-family: 'Krona One', sans-serif;
+    
+//     }
+//     .to{
+//       color:rgba(235, 25, 110, 1);
+//       top:130px;
+//       font-size:100px;
+//     }
+//   }
+//   .container{
+//     margin-top: 15%; 
+//     display:flex;
+//   }
+//   .left{
+//     width: 50%;
+//     padding-left:3%;
+//     h1{
+//       text-transform: uppercase;
+//       font-size:80px;
+//       span{
+//         color:rgba(235, 25, 110, 1);
+//         font-weight:900;
+//       }
+//     } 
+//     a{
+//       text-decoration:none;
+//       text-transform:uppercase;
+//       background-color:rgba(235, 25, 110, 1);
+//       border:4px solid rgba(235, 25, 110, 1);
+//       border-radius:8px;
+//       font-size:25px;
+//       padding: 1% 5%;
+//       transition:all 0.3s ease-in-out;
+//       &:hover{
+//         background-color:transparent;
+//         color:white;
+//         transition:all 0.3s ease-in-out;
+//       }
+//     }
+//   }
+//   .right{
+//     width: 50%;
+//   }
+// `;
 
 
 
-
-const Card = styled.div`
-  .cards{
-    .card{
-      width:33.33%;
-      align-items: center;
-      text-align: center;
-      display: inline-block;
-      border: 2px solid red;
-      cursor:pointer;
-    }
-  }
-  .back{
-    cursor:pointer;
-    background-color: red;
-    position:fixed;
-    z-index:+9;
-    right:10px;
-    border:2px solid black;
-    .backbtn{
-      
-    }
-  }
-`
-
-const StyledLink = styled(Link)`
-    text-decoration: none;
-    color: white;
-
-    transition: 0.2s;
-    &:hover{
-        color: #e63468;
-    }
-`;
-
-
-
-
-
-
-export default function Members() {
-
-  return(<li><StyledLink to="/layout/">Visit ISTE Year-Book</StyledLink></li>)
-
-
-
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     allMembersXlsxSheet1(sort: { fields: name, order: ASC }) {
-  //       edges {
-  //         node {
-  //           name
-  //           link
-  //           img
-  //           description
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-
-  // // const [Mouse,SetMouse] = useState(true);
-
-  // // function handleOver(){
-  // //   SetMouse(false);
-  // // }
-
-  // // function handleOut(){
-  // //   SetMouse(true);
-  // // }
-
-  // // const styleBtn = {
-  // //   backgroundColor: Mouse?"#03bfcb":"transparent",
-  // //   color: Mouse?"#231e39":"white"
-  // // };
-
-  // const [Id, setId] = useState('-1');
-  // const [Name, setName] = useState('kaustubh');
-  // const [Desc, setDesc] = useState('happy');
-  // const [Img, setImg] = useState('Img');
-  // const [show, setShow] = useState(false);
-
-
-  // function UserClick(event) {
-  //   let { id, name, desc, img } = event.currentTarget.dataset;
-  //   console.log(id, name, desc, img);
-  //   setId(id);
-  //   setName(name);
-  //   setDesc(desc);
-  //   setImg(img);
-  //   setShow(true);
-  // }
-
-  // function UserClickBack() {
-  //   setShow(false);
-  // }
-
-  // const ShowInsta = { display: show ? 'block' : 'none' }
-  // const ShowBackBtn = { display: show ? 'block' : 'none' }
-
-  // console.log({ Id, Name, Desc, Img });
-
-  // return (
-  //   <>
-  //     <Card>
-  //       <a
-  //         className="back"
-  //         style={ShowBackBtn}
-  //         onClick={UserClickBack}
-  //       >
-  //         <ArrowBackIcon className="backbtn" />
-  //       </a>
-  //       <h1 className="Header">Hello React</h1>
-  //       <div style={ShowInsta}>
-  //         <Member className="instaCard" id={Id} name={Name} desc={Desc} img={Img} />
-  //       </div>
-  //       <div className="cards">
-  //         {data.allMembersXlsxSheet1.edges.map((row, i) => (
-  //           <div className="card-container">
-  //               <img
-  //                 className="round"
-  //                 src={row.node.img}
-  //                 alt="user"
-  //                 // height="150px"
-  //               />
-  //               <h3>{row.node.name}</h3>
-  //               <p>{row.node.description}</p>
-  //               <div className="buttons">
-  //                 <button 
-  //                   className="profile" 
-  //                   // style={styleBtn} 
-  //                   // onMouseOver={handleOver} 
-  //                   // onMouseOut={handleOut}
-  //                   data-id={i} 
-  //                   data-tag={i} 
-  //                   data-name={row.node.name} 
-  //                   data-desc={row.node.description} 
-  //                   data-img={row.node.img} 
-  //                   onClick={UserClick}
-  //                 >
-  //                   View Profile
-  //                 </button>
-  //               </div>
-  //               <div className="skills">
-  //                 <h6>Handles</h6>
-  //                 <div>
-  //                   <a href="https://www.youtube.com/">
-  //                     <GitHubIcon style={{ fill: "white" }} />
-  //                   </a>
-  //                   <a href="https://www.youtube.com/">
-  //                     <InstagramIcon style={{ fill: "white" }} />
-  //                   </a>
-  //                   <a href="https://www.youtube.com/">
-  //                     <LinkedInIcon style={{ fill: "white" }} />
-  //                   </a>
-  //                 </div>
-  //               </div>
-  //             </div>
-  //         ))}
-  //       </div>
-  //     </Card>
-  //   </>
-  // )
-}
+// export default function Landing() {
+//   return(
+//     <LandingPage>
+//       <div className="top">
+//         <h1 className="welcome">Welcome</h1>
+//         <h1 className="to">to</h1>
+//       </div>
+//       <div className="container">
+//         <div className="left">
+//           <h1 className="fontBN">
+//             YearBook for <br/>
+//             <span>
+//             <Scrambler
+//               children=""
+//               text="Final-Year" 
+//               characters="+/%!?<)~"
+//               renderIn="4000"
+//             />
+//             </span>
+//           </h1>
+//           <Link to="/layout/">
+//             Visit YearBook 
+//           </Link>
+//         </div>
+//         <div className="right">
+//           Hello
+//         </div>
+//       </div>
+//     </LandingPage>
+//   );
+// }

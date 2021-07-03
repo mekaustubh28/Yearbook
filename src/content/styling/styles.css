@@ -1,15 +1,15 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-/* font-family: 'Josefin Sans', sans-serif; */
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
 
 :root{
-  --blue: #66FCF1;
+  --blue: #f7f7f7;
   --blue2: #45A29E;
   --black: #0B0C10;
   --gray: #1F2833;
@@ -19,6 +19,7 @@
   --greenblue: #379683;
   --green: #34421E;
   --greenwhite: #8EE4AF;
+  --purple: rgba(235, 25, 110, 1);
 }
 
 * {
@@ -29,6 +30,25 @@ body {
   background-color: #202529;
   font-family: 'Baloo Paaji 2', cursive;
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(185, 185, 185); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888; 
+}
+
 
 .cards{
   margin: auto;
@@ -58,7 +78,7 @@ p {
   font-family: 'Baloo Paaji 2', cursive;
 }
 .card-container {
-  background-color: #222831;
+  background-color: #222831ec;
   border-radius: 7px;
   box-shadow: 0px 20px 20px -10px rgba(0, 0, 0, 0.75);
   color: var(--lightgray);
@@ -73,20 +93,18 @@ p {
 
 
 .card-container .round {
-  border: 1px solid var(--yellow);
-  border: 5px solid #272133;
+  border: 5px solid #55d7dc;
   border-radius: 50%;
-  padding: 3px;
   width: 180px;
   height: 180px;
-  box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+  box-shadow: 0 5px 25px rgb(124, 124, 124),0 -5px 25px rgb(124, 124, 124);
   /* background: linear-gradient(0deg, #000, #262626 ); */
 }
 
 button.profile {
   cursor: pointer;
   background-color: #55d7dc;
-  border: 3px solid #55d7dc;
+  border: 4px solid #55d7dc;
   border-radius: 3px;
   color: black;
   font-family: Montserrat, sans-serif;
@@ -97,7 +115,7 @@ button.profile {
 
 button.profile:hover{
   background-color: transparent;
-  border-color:rgba(235, 25, 110, 1) ;
+  border-color:whitesmoke ;
   color: var(--white);
   transition: all 0.1s ease-in;
 }
@@ -137,3 +155,15 @@ button.profile:hover{
   font-size: 40px;
 }
 
+
+
+.fontBN{
+  /* font-family: 'Bebas Neue', cursive; */
+  font-family: 'Overpass', sans-serif;
+}
+
+
+#opacity{
+  display:none;
+  /* filter:blur(200px); */
+}

@@ -10,16 +10,19 @@ import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import TurnedInNotIcon from '@material-ui/icons/TurnedInNot';
 import Pictures from "./Pictures"
 import {AnimatePresence, motion} from "framer-motion";
+import Book from "../components/book";
 
 
 const ISTEgram = styled.div`
   position:fixed;
-  background:Red;
+  background:#222830;
   border:1px solid black;
+  color:whitesmoke;
   padding:1%;
   margin: 0px 23%;
-  z-index:+999999;
-  ${'' /* overflow-y:scroll; */}
+  z-index:+9;
+  height:100%;
+  overflow-y:scroll;
 
   @media screen and (max-width: 1602px){
     margin: 0px 20%;
@@ -31,7 +34,24 @@ const ISTEgram = styled.div`
   @media screen and (max-width: 1000px){
     margin: 0px;
   }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
 
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(185, 185, 185); 
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888; 
+  }
   img{
     display: inline-flex;
     margin:0;
@@ -197,11 +217,8 @@ export default function person(props) {
       y: "-100%"
     }
   };
-  // console.log(props.id, props.name, props.desc, props.img);
-
   return (
-
-    <div style={{background:"black"}}>
+    <div>
       <ISTEgram>
       <AnimatePresence>
         <motion.div 
@@ -240,7 +257,8 @@ export default function person(props) {
               <TurnedInNotIcon style={{fill:"#F58529"}}/>
           </div>
           </motion.div>
-        <Pictures></Pictures>
+        {/* <Pictures></Pictures> */}
+        <Book></Book>
         </AnimatePresence>
       </ISTEgram>
     </div>

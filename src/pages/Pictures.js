@@ -25,6 +25,7 @@ export default function Members() {
             key={i} 
             src={row.node.img} 
             width="32.33%" 
+            height="300px"
             style={{
               border: "1px solid gray", 
               marginLeft:"1%"
